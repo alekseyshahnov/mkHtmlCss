@@ -11,6 +11,10 @@ body {
    font-weight: 400;
    font-size: 16px;
    line-height: 22px;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   min-width: 360px;   /* Против скрола в стороны */
 }
 
 header,
@@ -28,6 +32,7 @@ footer {
 
 section {
    background-color: white;
+   flex-grow: 1;
 }
 
 h1,
@@ -77,18 +82,21 @@ a {
 
 .card-wrapper {
    display: flex;
-   gap: 20px;
-   padding-bottom: 100px;  /*добавили для того чтобы не прижимался к footer*/
+   gap: 14px;
+   padding-bottom: 100px;  /* Добавили для того чтобы не прижимался к footer */
+   flex-wrap: wrap;
 }
 
 .card {
    background-color: #FFFFFF;
    border: 2px solid #E7E7E7;
    border-radius: 5px;
-   width: 370px;
+   width: 330px;
    padding: 46px 20px;
+   display: flex;
    flex-direction: column;
    align-items: center;
+   flex-grow: 1;
 }
 
 .card-img {
@@ -104,8 +112,41 @@ a {
 .link {
    display: flex;
    align-items: center;
+   padding: 8px;
+  /* white-space: nowrap; --- Делает так, чтобы текст ссылки (если он длинный) не переносился на другую строку */
 }
 
 .link img {
    margin-right: 10px;
+}
+
+@media (max-width: 767px) {
+   h1 {                          
+      font-size: 36px;
+      line-height: 42px;
+      margin: 46px 0px;
+   }
+   .list {
+      justify-content: space-between; /* Добавляем к footer для правильного размещения иконок */
+      flex-wrap: wrap;
+   }
+   li {         /* По хорошему нужно создать клас для li и стилизовать */
+      flex-grow: 1; /*  Все лишки занимают свободное пространство */
+      width: 50%;  
+   }
+   .logo {
+      padding: 17px 15px;
+   }
+}
+
+@media (max-width: 375px) {               /* Делаем адаптив. В медиа запрос пишим только то, что меняется при изменении размера. */
+   h1 {                          /* Указываем, где имено должен изменится к примеру размер */
+      font-size: 28px;                    /* И меняем его. Данные берем из нужного размерного макета figma */
+      line-height: 33px;
+      margin: 44px 0px 36px;
+   }
+   .logo {
+      width: 160px;
+      padding: 22px 15px;
+   }
 }
